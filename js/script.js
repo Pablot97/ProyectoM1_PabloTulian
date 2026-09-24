@@ -24,9 +24,6 @@ function elegirTextoHex(color) {
     }
 }
 
-function generarColorHsl() {
-    // ...
-}
 
 function generarColorHsl() {
     const h = Math.floor(Math.random() * 361);
@@ -74,13 +71,24 @@ botonGenerar.addEventListener("click", function() {
 
         const tarjeta = document.createElement("div");
 
-        tarjeta.textContent = color;
+tarjeta.textContent = color;
 
-        tarjeta.style.setProperty("--color", color);
-        tarjeta.style.color = colorTexto;
+tarjeta.style.setProperty("--color", color);
+tarjeta.style.color = colorTexto;
 
-        tarjeta.classList.add("tarjeta-color");
+tarjeta.classList.add("tarjeta-color");
 
-        paleta.appendChild(tarjeta);
+const botonCopiar = document.createElement("button");
+
+botonCopiar.textContent = "Copiar";
+
+botonCopiar.addEventListener("click", function() {
+    navigator.clipboard.writeText(color);
+    mensaje.textContent = `¡${color} copiado!`;
+});
+
+tarjeta.appendChild(botonCopiar);
+
+paleta.appendChild(tarjeta);
     }
 });
